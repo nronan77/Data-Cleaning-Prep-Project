@@ -14,7 +14,7 @@ REGION_INDEX = 3
 # and determine which titles are movies
 def read_title_basics_data(titles_dictionary):
     # Open files with utf-8 encoding to ensure no read/write errors
-    title_basics = open("./data/title.basics.tsv", "r", encoding="utf-8")
+    title_basics = open("../data/title.basics.tsv", "r", encoding="utf-8")
     for title_basics_record in title_basics:
         fields = title_basics_record.split("\t") # Split fields on the tab char
 
@@ -30,8 +30,8 @@ def read_title_basics_data(titles_dictionary):
 # This function iterates through the title akas data to check which titles
 # have a US region and write valid data to the reduced data file
 def read_title_akas_and_reduce(titles_dictionary):
-    title_akas = open("./data/title.akas.tsv", "r", encoding="utf-8")
-    title_akas_reduced = open("./data/title.akas.reduced.tsv", "w",
+    title_akas = open("../data/title.akas.tsv", "r", encoding="utf-8")
+    title_akas_reduced = open("../data/title.akas.reduced.tsv", "w",
                               encoding="utf-8")
     # Copy fields over to reduced data file
     title_akas_reduced.write(title_akas.readline())
@@ -62,8 +62,8 @@ def read_title_akas_and_reduce(titles_dictionary):
 # This function returns to the title_basics data file once we know the
 # title's region to write valid data to the reduced data set
 def reduce_title_basics(titles_dictionary):
-    title_basics = open("./data/title.basics.tsv", "r", encoding="utf-8")
-    title_basics_reduced = open("./data/title.basics.reduced.tsv", "w",
+    title_basics = open("../data/title.basics.tsv", "r", encoding="utf-8")
+    title_basics_reduced = open("../data/title.basics.reduced.tsv", "w",
                                 encoding="utf-8")
     title_basics_reduced.write(title_basics.readline())
     for title_basics_record in title_basics:
@@ -80,8 +80,8 @@ def reduce_title_basics(titles_dictionary):
 # Repeats steps from previous functions to read and reduce
 # title ratings data
 def read_title_ratings_and_reduce(titles_dictionary):
-    title_ratings = open("./data/title.ratings.tsv", "r", encoding="utf-8")
-    title_ratings_reduced = open("./data/title.ratings.reduced.tsv", "w",
+    title_ratings = open("../data/title.ratings.tsv", "r", encoding="utf-8")
+    title_ratings_reduced = open("../data/title.ratings.reduced.tsv", "w",
                                  encoding="utf-8")
     title_ratings_reduced.write(title_ratings.readline())
     for title_ratings_record in title_ratings:

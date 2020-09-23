@@ -7,7 +7,7 @@
 # Open our reduced title basics data set and iterate through to
 # add values to the dictionary
 def read_title_basics_data(movies_dictionary):
-    title_basics = open("./data/title.basics.reduced.tsv", "r",
+    title_basics = open("../data/title.basics.reduced.tsv", "r",
                         encoding="utf-8")
     title_basics.readline() # Skip first line since it is just the fields
     print("Reading title basics data")
@@ -32,7 +32,7 @@ def read_title_basics_data(movies_dictionary):
 
 # Reads data from title ratings data and adds to movies dictionary
 def read_title_ratings_data(movies_dictionary):
-    title_ratings = open("./data/title.ratings.reduced.tsv", "r",
+    title_ratings = open("../data/title.ratings.reduced.tsv", "r",
                          encoding="utf-8")
     title_ratings.readline()
     print("Reading title ratings data")
@@ -50,7 +50,7 @@ def read_title_ratings_data(movies_dictionary):
 # Reads data from title akas and adds to movies dictionary
 def read_title_akas_data(movies_dictionary):
     # Repeat process for title akas data set
-    title_akas = open("./data/title.akas.reduced.tsv", "r", encoding="utf-8")
+    title_akas = open("../data/title.akas.reduced.tsv", "r", encoding="utf-8")
     title_akas.readline()
     print("Readings title akas data")
     for title_akas_record in title_akas:
@@ -73,8 +73,8 @@ def read_title_akas_data(movies_dictionary):
 # Reads data from names.basics.tsv and combines with data in our
 # movies dictionary
 def combine_data(movies_dictionary):
-    name_basics = open("./data/name.basics.tsv", "r", encoding="utf-8")
-    combined_data = open("./data/combined.data.tsv", "w", encoding="utf-8")
+    name_basics = open("../data/name.basics.tsv", "r", encoding="utf-8")
+    combined_data = open("../data/combined.data.tsv", "w", encoding="utf-8")
     # Write all unique fields to first line. The 'title' field is now known
     # as localTitle to better define it according to IMDb's definition
     # knownForTitle is refers to the tconst of the title
@@ -120,7 +120,7 @@ def combine_data(movies_dictionary):
                     numVotes = movie_record["numVotes"]
                     genres = movie_record["genres"].split(",")
                     attributes = movie_record["attributes"].split(",")
-                    titleTypes = movie_record["types"].split(",")
+                    attributeTypes = movie_record["types"].split(",")
                 # If we get a KeyError, set all title-specific values to '\N'
                 except KeyError:
                     titleType = "\\N"
@@ -139,12 +139,12 @@ def combine_data(movies_dictionary):
                     numVotes = "\\N"
                     genres = ["\\N"]
                     attributes = ["\\N"]
-                    titleTypes = ["\\N"]
+                    attributeTypes = ["\\N"]
 
                 # Iterate through title's arrays to create all possible entries
                 for genre in genres:
                     for attribute in attributes:
-                        for titleType in titleTypes:
+                        for attributeType in attributeTypes:
                             # Format the string with all values and write to
                             # combined data set file
                             combined_data.write(
@@ -154,7 +154,7 @@ def combine_data(movies_dictionary):
                                 f"{originalTitle}\t{localTitle}\t{isAdult}\t"
                                 f"{startYear}\t{endYear}\t{runtimeMinutes}\t"
                                 f"{genre}\t{ordering}\t{region}\t{language}\t"
-                                f"{titleType}\t{attribute}\t{isOriginalTitle}\t"
+                                f"{attributeType}\t{attribute}\t{isOriginalTitle}\t"
                                 f"{averageRating}\t{numVotes}\n"
                             )
     name_basics.close()
