@@ -1,4 +1,3 @@
-#
 # This script loads the combined data in and determines things like
 # the number of unique values, total values, and range for numeric values,
 # for each attribute.
@@ -514,4 +513,75 @@ def write_dict_file(dataDict):
 # then writing it to the new file
 if __name__ == "__main__":
     dataDict = load_data()
+
+    isAdultDict = dataDict["isAdult"]
+    isAdultFile = open("../data/isAdult.txt", "w", encoding="utf-8")
+    isAdultFile.write("value\tfrequency\n")
+    for isAdultBool in isAdultDict:
+        isAdultFile.write(f"{isAdultBool}\t{isAdultDict[isAdultBool]}\n")
+    isAdultFile.close()
+
+    isOriginalTitleDict = dataDict["isOriginalTitle"]
+    isOriginalTitleFile = open("../data/isOriginalTitle.txt", "w", encoding="utf-8")
+    isOriginalTitleFile.write("value\tfrequency\n")
+    for isOriginalTitleBool in isOriginalTitleDict:
+        isOriginalTitleFile.write(f"{isOriginalTitleBool}\t{isOriginalTitleDict[isOriginalTitleBool]}\n")
+    isOriginalTitleFile.close()
+
+    typeDict = dataDict["type"]
+    typeFile = open("../data/types.txt", "w", encoding="utf-8")
+    typeFile.write("type\tfrequency\n")
+    for type in typeDict:
+        typeFile.write(f"{type}\t{typeDict[type]}\n")
+    typeFile.close()
+
+    languageDict = dataDict["language"]
+    languageFile = open("../data/languages.txt", "w", encoding="utf-8")
+    languageFile.write("language\tfrequency\n")
+    for language in languageDict:
+        languageFile.write(f"{language}\t{languageDict[language]}\n")
+    languageFile.close()
+
+    birthYearDict = dataDict["birthYear"]
+    birthYearFile = open("../data/birthYears.txt", "w", encoding="utf-8")
+    birthYearFile.write("year\tfrequency\n")
+    for birthYear in birthYearDict:
+        birthYearFile.write(f"{birthYear}\t{birthYearDict[birthYear]}\n")
+    birthYearFile.close()
+
+    deathYearDict = dataDict["deathYear"]
+    deathYearsFile = open("../data/deathYears.txt", "w", encoding="utf-8")
+    deathYearsFile.write("year\tfrequency\n")
+    for deathYear in deathYearDict:
+        deathYearsFile.write(f"{deathYear}\t{deathYearDict[deathYear]}\n")
+    deathYearsFile.close()
+
+    startYearDict = dataDict["startYear"]
+    startYearFile = open("../data/startYears.txt", "w", encoding="utf-8")
+    startYearFile.write("year\tfrequency\n")
+    for startYear in startYearDict:
+        startYearFile.write(f"{startYear}\t{startYearDict[startYear]}\n")
+    startYearFile.close()
+
+    runtimeDict = dataDict["runtime"]
+    runtimeFile = open("../data/runtimeMinutes.txt", "w", encoding="utf-8")
+    runtimeFile.write("runtimeMinutes\tfrequency\n")
+    for runtime in runtimeDict:
+        runtimeFile.write(f"{runtime}\t{runtimeDict[runtime]}\n")
+    runtimeFile.close()
+
+    avgRatingDict = dataDict["averageRating"]
+    avgRatingFile = open("../data/avgRatings.txt", "w", encoding="utf-8")
+    avgRatingFile.write("rating\tfrequency\n")
+    for rating in avgRatingDict:
+        avgRatingFile.write(f"{rating}\t{avgRatingDict[rating]}\n")
+    avgRatingFile.close()
+
+    numVotesDict = dataDict["numVotes"]
+    numVotesFile = open("../data/numVotes.txt", "w", encoding="utf-8")
+    numVotesFile.write("numVotes\tfrequency\n")
+    for numVotes in numVotesDict:
+        numVotesFile.write(f"{numVotes}\t{numVotesDict[numVotes]}\n")
+    numVotesFile.close()
+
     write_dict_file(dataDict)
